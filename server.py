@@ -15,7 +15,10 @@ def main():
 				pass
 			return
 		else:
-			print(b64decode(requests.get(url + urllib.quote( b64encode(cmd.encode('UTF-16LE')), safe='' ) ).text).replace('\x00',''))
+			try:
+				print(b64decode(requests.get(url + urllib.quote( b64encode(cmd.encode('UTF-16LE')), safe='' ) ).text).replace('\x00',''))
+			except:
+				pass
 
 if __name__ == "__main__":
 	main()
