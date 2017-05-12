@@ -22,7 +22,7 @@ try
 		} elseif ($command.length -eq 0) {
 			$html = $usage
 		} else {
-			$command =  [System.Text.Encoding]::Unicode.GetString([System.Convert]::FromBase64String( $Request.QueryString.Item("command") ))
+			$command =  [System.Text.Encoding]::Unicode.GetString([System.Convert]::FromBase64String( $command ))
 			try {
 				$script = $ExecutionContext.InvokeCommand.NewScriptBlock($command)
 				$html = & $script
